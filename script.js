@@ -10,9 +10,9 @@ function updateRotation(rate) {
 }
 
 function updateAcceleration(acceleration) {
-  update("x").innerHTML = accel.x;
-  update("y").innerHTML = accel.y;
-  update("z").innerHTML = accel.z;
+  update("x").innerHTML = acceleration.x;
+  update("y").innerHTML = acceleration.y;
+  update("z").innerHTML = acceleration.z;
 }
 
 function eventHandler(event) {
