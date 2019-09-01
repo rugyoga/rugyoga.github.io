@@ -23,3 +23,9 @@ function eventHandler(event) {
 }
 
 window.addEventListener("devicemotion", eventHandler, true);
+if (window.DeviceMotionEvent != undefined) {
+  window.ondevicemotion = eventHandler;
+}
+else {
+  alert("window.DeviceMotionEvent undefined")
+}
