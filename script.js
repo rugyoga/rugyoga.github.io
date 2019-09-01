@@ -4,7 +4,6 @@ function update(id, value)
 }
 
 function updateRotation(rate) {
-  alert( "" )
   var a = rate.alpha, b = rate.beta, g = rate.gamma;
   update("alpha", a);
   update("beta",  b);
@@ -14,9 +13,9 @@ function updateRotation(rate) {
 
 function updateAcceleration(acceleration) {
   var x = acceleration.x, y = acceleration.y, z = acceleration.z;
-  update("x").innerHTML = x;
-  update("y").innerHTML = y;
-  update("z").innerHTML = z;
+  update("x", x);
+  update("y", y);
+  update("z", z);
   alert(`x: ${x} y: ${y} z: ${z}`);
 }
 
