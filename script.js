@@ -20,7 +20,7 @@ function updateAcceleration(acceleration) {
 }
 
 function eventHandler(event) {
-  updateAcceleration(event.acceleration);
+  updateAcceleration(event.accelerationIncludingGravity);
   var rate = event.rotationRate;
   if (rate) {
     updateRotation(rate);
@@ -45,7 +45,7 @@ function eventHandler(event) {
 //   }
 //   // Don't do anything if the permission was denied.
 // });
-window.addEventListener("devicemotion", eventHandler);
+//window.addEventListener("devicemotion", eventHandler);
 if (window.DeviceMotionEvent != undefined) {
   window.ondevicemotion = eventHandler;
 }
