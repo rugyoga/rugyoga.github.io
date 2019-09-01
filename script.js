@@ -14,6 +14,7 @@ function updateAcceleration(acceleration) {
 
 function eventHandler(event) {
   updateAcceleration(event.accelerationIncludingGravity);
+  update("interval", event.interval);
 }
 
 if (window.DeviceMotionEvent != undefined) {
