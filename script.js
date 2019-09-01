@@ -27,15 +27,15 @@ function eventHandler(event) {
   }
 }
 
-let laSensor = new LinearAccelerationSensor({frequency: 60});
-
-laSensor.addEventListener('reading', e => {
-  updateAcceleration(laSensor);
-  console.log("Linear acceleration along the X-axis " + laSensor.x);
-  console.log("Linear acceleration along the Y-axis " + laSensor.y);
-  console.log("Linear acceleration along the Z-axis " + laSensor.z);
-});
-laSensor.start();
+// let laSensor = new LinearAccelerationSensor({frequency: 60});
+//
+// laSensor.addEventListener('reading', e => {
+//   updateAcceleration(laSensor);
+//   console.log("Linear acceleration along the X-axis " + laSensor.x);
+//   console.log("Linear acceleration along the Y-axis " + laSensor.y);
+//   console.log("Linear acceleration along the Z-axis " + laSensor.z);
+// });
+// laSensor.start();
 
 // navigator.permissions.query({name:'accelerometer'}).then(function(result) {
 //   if (result.state == 'granted') {
@@ -45,10 +45,10 @@ laSensor.start();
 //   }
 //   // Don't do anything if the permission was denied.
 // });
-// window.addEventListener("devicemotion", eventHandler, true);
-// if (window.DeviceMotionEvent != undefined) {
-//   window.ondevicemotion = eventHandler;
-// }
-// else {
-//   console.log("window.DeviceMotionEvent undefined")
-// }
+window.addEventListener("devicemotion", eventHandler);
+if (window.DeviceMotionEvent != undefined) {
+  window.ondevicemotion = eventHandler;
+}
+else {
+  console.log("window.DeviceMotionEvent undefined")
+}
