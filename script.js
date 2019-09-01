@@ -6,10 +6,8 @@ function update(id, value)
 let OneG = 9.80665;
 
 function updateAcceleration(acceleration) {
-  var x = acceleration.x/OneG, y = acceleration.y/OneG, z = (acceleration.z-OneG)/OneG;
-  update("x", x);
-  update("y", y);
-  update("z", z);
+  var x = acceleration.x/OneG, y = acceleration.y/OneG;
+  update("content", Math.sqrt(x*x + y*y));
 }
 
 function eventHandler(event) {
