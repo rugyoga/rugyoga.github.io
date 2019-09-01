@@ -7,7 +7,7 @@ let OneG = 9.80665;
 
 function updateAcceleration(acceleration) {
   var x = acceleration.x/OneG, y = acceleration.y/OneG;
-  update("g-force", Math.sqrt(x*x + y*y));
+  update("gforce", Math.sqrt(x*x + y*y));
 }
 
 function eventHandler(event) {
