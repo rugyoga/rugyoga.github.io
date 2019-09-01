@@ -4,15 +4,20 @@ function update(id, value)
 }
 
 function updateRotation(rate) {
-  update("alpha", rate.alpha);
-  update("beta",  rate.beta);
-  update("gamma", rate.gamma);
+  alert( "" )
+  var a = rate.alpha, b = rate.beta, g = rate.gamma;
+  update("alpha", a);
+  update("beta",  b);
+  update("gamma", g);
+  alert(`alpha: ${a} beta: ${b} gamma: ${g}`);
 }
 
 function updateAcceleration(acceleration) {
-  update("x").innerHTML = acceleration.x;
-  update("y").innerHTML = acceleration.y;
-  update("z").innerHTML = acceleration.z;
+  var x = acceleration.x, y = acceleration.y, z = acceleration.z;
+  update("x").innerHTML = x;
+  update("y").innerHTML = y;
+  update("z").innerHTML = z;
+  alert(`x: ${x} y: ${y} z: ${z}`);
 }
 
 function eventHandler(event) {
