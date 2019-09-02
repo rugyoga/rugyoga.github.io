@@ -5,10 +5,21 @@ function update(id, value)
 
 let OneG = 9.80665;
 
-function updateAcceleration(gs) {
-  var x = gs.x/OneG, y = gs.y/OneG, z = (gs.z-OneG)/OneG;
-  var vector = Math.cbrt(x*x*x + y*y*y + z*z*z);
-  update("gforce", vector.toFixed(2));
+function computeGsRemoveZ(acceleration) {
+  var x = acceleration.x/OneG,
+      y = acceleration.y/OneG,
+      z = (acceleration.z-OneG)/OneG;
+  return Math.cbrt(x*x*x + y*y*y + z*z*z);
+}
+
+function computeGsIgnoreZ(acceleration) {
+  var x = acceleration.x/OneG,
+      y = acceleration.y/OneG;
+  return Math.sqrt(x*x + y*y);
+}
+
+function updateAcceleration(acceleration) {
+  update("gforce", computeGsIgnoreZ(acceleration).toFixed(2));
 }
 
 function eventHandler(event) {
