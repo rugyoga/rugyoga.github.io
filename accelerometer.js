@@ -13,7 +13,7 @@ function ms2ToG(ms2) {
 function computeGsRemoveZ(ms2) {
   let x = ms2ToG(ms2.x),
       y = ms2ToG(ms2.y),
-      z = ms2ToG(ms2.z-OneG);
+      z = ms2ToG(ms2.z+OneG);
   return Math.cbrt(x*x*x + y*y*y + z*z*z);
 }
 
