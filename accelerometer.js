@@ -28,7 +28,12 @@ function updateAcceleration(acceleration) {
 }
 
 function eventHandler(event) {
-  updateAcceleration(computeGsIgnoreZ(event.accelerationIncludingGravity));
+  let f = useSqrt() ? computeGsIgnoreZ : computeGsRemoveZ;
+  updateAcceleration(f(event.accelerationIncludingGravity));
+}
+
+function useSqrt() {
+  return document.getElementById('square').checked;
 }
 
 if (window.DeviceMotionEvent != undefined) {
