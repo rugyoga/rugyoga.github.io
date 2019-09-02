@@ -24,11 +24,11 @@ function computeGsIgnoreZ(ms2) {
 }
 
 function updateAcceleration(acceleration) {
-  update("gforce", computeGsRemoveZ(acceleration).toFixed(2));
+  update("gforce", acceleration.toFixed(2));
 }
 
 function eventHandler(event) {
-  updateAcceleration(event.accelerationIncludingGravity);
+  updateAcceleration(computeGsIgnoreZ(event.accelerationIncludingGravity));
 }
 
 if (window.DeviceMotionEvent != undefined) {
