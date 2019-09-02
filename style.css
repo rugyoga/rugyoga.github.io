@@ -2,11 +2,5 @@ body {
   font-family: helvetica, arial, sans serif;
 }
 div {
-  text-align: justify;
-}
-
-div:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
+  font-size: xx-large;
 }
