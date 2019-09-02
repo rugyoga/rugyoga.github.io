@@ -43,8 +43,8 @@ function updateAcceleration(acceleration) {
 function eventHandler(event) {
   let f = useSqrt() ? computeGsIgnoreZ : computeGsRemoveZ;
   updateAcceleration(f(event.accelerationIncludingGravity));
-  console.inspect(event.accelerationIncludingGravity);
-  console.inspect(event.acceleration);
+  console.log("with G: %o", event.accelerationIncludingGravity);
+  console.log("without G: %o", event.acceleration);
 }
 
 function useSqrt() {
