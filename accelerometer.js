@@ -5,16 +5,21 @@ function update(id, value)
 
 let OneG = 9.80665;
 
-function computeGsRemoveZ(acceleration) {
-  var x = acceleration.x/OneG,
-      y = acceleration.y/OneG,
-      z = (acceleration.z-OneG)/OneG;
+// convert M per second per second to G
+function ms2ToG(ms2) {
+  return ms2/OneG;
+}
+
+function computeGsRemoveZ(ms2) {
+  var x = ms2ToG(ms2.x),
+      y = ms2ToG(ms2.y),
+      z = ms2ToG(ms2.z-OneG);
   return Math.cbrt(x*x*x + y*y*y + z*z*z);
 }
 
-function computeGsIgnoreZ(acceleration) {
-  var x = acceleration.x/OneG,
-      y = acceleration.y/OneG;
+function computeGsIgnoreZ(ms2) {
+  var x = ms2ToG(ms2.x),
+      y = ms2ToG(ms2.y);
   return Math.sqrt(x*x + y*y);
 }
 
