@@ -11,20 +11,20 @@ function ms2ToG(ms2) {
 }
 
 function computeGsRemoveZ(ms2) {
-  var x = ms2ToG(ms2.x),
+  let x = ms2ToG(ms2.x),
       y = ms2ToG(ms2.y),
       z = ms2ToG(ms2.z-OneG);
   return Math.cbrt(x*x*x + y*y*y + z*z*z);
 }
 
 function computeGsIgnoreZ(ms2) {
-  var x = ms2ToG(ms2.x),
+  let x = ms2ToG(ms2.x),
       y = ms2ToG(ms2.y);
   return Math.sqrt(x*x + y*y);
 }
 
 function updateAcceleration(acceleration) {
-  update("gforce", computeGsIgnoreZ(acceleration).toFixed(2));
+  update("gforce", computeGsRemoveZ(acceleration).toFixed(2));
 }
 
 function eventHandler(event) {
