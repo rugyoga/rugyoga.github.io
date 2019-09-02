@@ -14,24 +14,12 @@ function square(x) {
   return x*x;
 }
 
-function cube(x) {
-  return x*x*x;
-}
-
 function squareRoot(x) {
   return Math.sqrt(x);
 }
 
-function cubeRoot(x) {
-  return Math.cbrt(x);
-}
-
 function distance3D(x, y, z) {
   return squareRoot(square(x) + square(y) + square(z));
-}
-
-function distance2D(x, y, _z) {
-  return squareRoot(square(x) + square(y));
 }
 
 function updateAcceleration(acceleration) {
@@ -39,18 +27,8 @@ function updateAcceleration(acceleration) {
 }
 
 function eventHandler(event) {
-  let f = use2D() ? distance2D : distance3D;
-  let a = includeGravity() ? event.accelerationIncludingGravity : event.acceleration;
-  let x = a.x, y = a.y, z = includeGravity() ? a.z : a.z + OneG;
-  updateAcceleration(f(ms2ToG(x), ms2ToG(y), ms2ToG(z)));
-}
-
-function use2D() {
-  return document.getElementById('dimensions2').checked;
-}
-
-function includeGravity() {
-  return document.getElementById('includeG').checked;
+  let a = event.acceleration;
+  updateAcceleration(ms2ToG(distance3D(a.x, a.y, a.z)));
 }
 
 if (window.DeviceMotionEvent != undefined) {
