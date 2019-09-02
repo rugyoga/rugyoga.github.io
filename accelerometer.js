@@ -10,17 +10,30 @@ function ms2ToG(ms2) {
   return ms2/OneG;
 }
 
+function square(x) {
+  return x*x;
+}
+
+function cube(x) {
+  return x*x*x;
+}
+
+function squareRoot(x) {
+  return Math.sqrt(x);
+}
+
+function cubeRoot(x) {
+  return Math.cbrt(x);
+}
+
 function computeGsRemoveZ(ms2) {
-  let x = ms2ToG(ms2.x),
-      y = ms2ToG(ms2.y),
-      z = ms2ToG(ms2.z+OneG);
-  return Math.cbrt(x*x*x + y*y*y + z*z*z);
+  let x = ms2ToG(ms2.x), y = ms2ToG(ms2.y), z = ms2ToG(ms2.z+OneG);
+  return cubeRoot(cube(x) + cube(y) + cube(z));
 }
 
 function computeGsIgnoreZ(ms2) {
-  let x = ms2ToG(ms2.x),
-      y = ms2ToG(ms2.y);
-  return Math.sqrt(x*x + y*y);
+  let x = ms2ToG(ms2.x), y = ms2ToG(ms2.y);
+  return squareRoot(square(x) + square(y));
 }
 
 function updateAcceleration(acceleration) {
@@ -30,6 +43,8 @@ function updateAcceleration(acceleration) {
 function eventHandler(event) {
   let f = useSqrt() ? computeGsIgnoreZ : computeGsRemoveZ;
   updateAcceleration(f(event.accelerationIncludingGravity));
+  console.inspect(event.accelerationIncludingGravity);
+  console.inspect(event.acceleration);
 }
 
 function useSqrt() {
