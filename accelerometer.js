@@ -26,13 +26,11 @@ function cubeRoot(x) {
   return Math.cbrt(x);
 }
 
-function computeGsRemoveZ(ms2) {
-  let x = ms2ToG(ms2.x), y = ms2ToG(ms2.y), z = ms2ToG(ms2.z+OneG);
-  return cubeRoot(cube(x) + cube(y) + cube(z));
+function distance3D(x, y, z) {
+  return squareRoot(square(x) + square(y) + square(z));
 }
 
-function computeGsIgnoreZ(ms2) {
-  let x = ms2ToG(ms2.x), y = ms2ToG(ms2.y);
+function distance2D(x, y, _z) {
   return squareRoot(square(x) + square(y));
 }
 
@@ -41,14 +39,18 @@ function updateAcceleration(acceleration) {
 }
 
 function eventHandler(event) {
-  let f = useSqrt() ? computeGsIgnoreZ : computeGsRemoveZ;
-  updateAcceleration(f(event.accelerationIncludingGravity));
-  console.log("with G: %o", event.accelerationIncludingGravity);
-  console.log("without G: %o", event.acceleration);
+  let f = use2D() ? distance2D : distance3D;
+  let a = includeGravity() ? event.accelerationIncludingGravity : event.acceleration;
+  let x = a.x, y = a.y, z = includeGravity() ? a.z : a.z + OneG;
+  updateAcceleration(f(ms2ToG(x), ms2ToG(y), ms2ToG(z)));
 }
 
-function useSqrt() {
-  return document.getElementById('square').checked;
+function use2D() {
+  return document.getElementById('dimensions2').checked;
+}
+
+function includeGravity() {
+  return document.getElementById('includeG').checked;
 }
 
 if (window.DeviceMotionEvent != undefined) {
