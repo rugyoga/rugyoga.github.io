@@ -18,7 +18,7 @@ function squareRoot(x) {
   return Math.sqrt(x);
 }
 
-function distance3D(x, y, z) {
+function magnitude(x, y, z) {
   return squareRoot(square(x) + square(y) + square(z));
 }
 
@@ -28,7 +28,7 @@ function updateAcceleration(acceleration) {
 
 function eventHandler(event) {
   let a = event.acceleration;
-  updateAcceleration(ms2ToG(distance3D(a.x, a.y, a.z)));
+  updateAcceleration(ms2ToG(magnitude(a.x, a.y, a.z)));
 }
 
 if (window.DeviceMotionEvent != undefined) {
